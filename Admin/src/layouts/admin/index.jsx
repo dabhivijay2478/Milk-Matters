@@ -83,7 +83,12 @@ export default function Admin(props) {
                   path="/"
                   element={<Navigate to="/admin/default" replace />}
                 />
+                <Route
+                  path="/profile"
+                  element={<Navigate to="/admin/profile" replace />}
+                />
               </Routes>
+              
             </div>
             <div className="p-3">
               <Footer />

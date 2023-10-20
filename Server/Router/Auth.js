@@ -74,7 +74,7 @@ router.post("/user-login", async (req, res) => {
 
 router.put('/users/:dairyCode', async (req, res) => {
     const { dairyCode } = req.params;
-    const { name, address, contact, role, password ,email} = req.body;
+    const { name, address, contact, role, password, email } = req.body;
     try {
         const user = await User.findOne({ dairyCode });
         if (!user) {
@@ -83,7 +83,7 @@ router.put('/users/:dairyCode', async (req, res) => {
         user.name = name;
         user.address = address;
         user.contact = contact;
-        user.email=email;
+        user.email = email;
         user.role = role;
         await user.save();
         res.status(200).json({ success: true, user });
@@ -110,6 +110,7 @@ router.get('/Getuser/:dairyCode/:userId', async (req, res) => {
             address: user.address,
             contact: user.contact,
             role: user.role,
+            email: user.email
         };
 
         res.status(200).json(userData);

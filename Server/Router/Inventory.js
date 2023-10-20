@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Inventory = require("../Schema/Inventory/inventory"); // Make sure the import path is correct
+const Product = require("../Schema/CattleFeed/Product");
 
 // Route to get all inventory items
 router.get("/get-inventory", async (req, res) => {
     try {
-        const inventoryItems = await Inventory.find();
+        const inventoryItems = await Inventory.find().populate('product');;
         res.status(200).json({ success: true, inventoryItems });
     } catch (error) {
         console.log(error);

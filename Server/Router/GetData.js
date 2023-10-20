@@ -13,6 +13,15 @@ router.get('/get-farmers', async (req, res) => {
     }
 });
 
+router.get('/get-users', async (req, res) => {
+    try {
+        const farmers = await User.find({}).select('-password -tokens');
+        res.json(farmers);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, error: 'Something went wrong' });
+    }
+});
 
 router.get('/get-veterinarians', async (req, res) => {
     try {

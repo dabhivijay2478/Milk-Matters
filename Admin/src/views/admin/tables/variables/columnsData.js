@@ -1,75 +1,81 @@
-export const columnsDataDevelopment = [
+export const columnsUser = [
   {
-    Header: "NAME",
+    Header: "Name",
     accessor: "name",
   },
   {
-    Header: "TECH",
-    accessor: "tech",
+    Header: "DairyCode",
+    accessor: "dairyCode",
   },
   {
-    Header: "DATE",
-    accessor: "date",
+    Header: "Mobile",
+    accessor: "contact",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    Header: "Role",
+    accessor: "role",
   },
 ];
 
-export const columnsDataCheck = [
+export const columnsProducts = [
   {
-    Header: "NAME",
-    accessor: "name",
+    Header: "Product-Image",
+    accessor: "image",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    Header: "Product-Name",
+    accessor: "title",
   },
   {
-    Header: "QUANTITY",
-    accessor: "quantity",
+    Header: "Company",
+    accessor: "company",
   },
   {
-    Header: "DATE",
-    accessor: "date",
-  },
-];
-
-export const columnsDataColumns = [
-  {
-    Header: "NAME",
-    accessor: "name",
+    Header: "Price",
+    accessor: "price",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
-  },
-  {
-    Header: "QUANTITY",
-    accessor: "quantity",
-  },
-  {
-    Header: "DATE",
-    accessor: "date",
+    Header: "Available-Stock",
+    accessor: "availableStock",
   },
 ];
 
-export const columnsDataComplex = [
+export const columnsOrders = [
   {
     Header: "NAME",
     accessor: "name",
   },
   {
-    Header: "STATUS",
-    accessor: "status",
+    Header: "DairyCode",
+    accessor: "dairyCode",
   },
   {
-    Header: "DATE",
-    accessor: "date",
+    Header: "Product-Name",
+    accessor: "product",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    Header: "Product-Quantity",
+    accessor: "productQuantity",
   },
+  {
+    Header: "Contact",
+    accessor: "contact",
+  },
+
+];
+
+export const columnsStocks = [
+  {
+    Header: "Product-Name",
+    accessor: "product",
+  },
+  {
+    Header: "Available-Stock",
+    accessor: "availableStock",
+  },
+  {
+    Header: "Sell-Stock",
+    accessor: "sellStock",
+  },
+
 ];
