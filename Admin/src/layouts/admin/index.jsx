@@ -88,7 +88,6 @@ export default function Admin(props) {
                   element={<Navigate to="/admin/profile" replace />}
                 />
               </Routes>
-              
             </div>
             <div className="p-3">
               <Footer />

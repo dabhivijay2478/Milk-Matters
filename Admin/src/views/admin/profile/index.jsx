@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 import Profile from "./components/Profile";
 
@@ -7,8 +7,6 @@ const ProfileOverview = () => {
     <div className=" ">
       <Profile />
     </div>
-
-
   );
 };
 

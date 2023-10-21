@@ -6,7 +6,6 @@ const Footer = () => {
           ©{1900 + new Date().getYear()} Milk-Matters. All Rights Reserved.
         </p>
       </h5>
-
     </div>
   );
 };

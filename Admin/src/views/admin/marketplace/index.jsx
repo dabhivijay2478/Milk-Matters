@@ -1,6 +1,5 @@
-import React from 'react'
-import Order from './components/Order';
-
+import React from "react";
+import Order from "./components/Order";
 
 const Marketplace = () => {
   return (

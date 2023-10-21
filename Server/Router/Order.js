@@ -50,6 +50,7 @@ router.post("/order-create", async (req, res) => {
             packing: product.attributes.packing,
             status: product.attributes.status,
             availableStock: product.attributes.availableStock,
+            sellStock: productQuantity,
         });
 
         await inventory.save();

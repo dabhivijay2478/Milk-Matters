@@ -4,7 +4,12 @@ import Products from "./components/Products";
 import UserTable from "./components/UserTable";
 import Orders from "./components/Orders";
 import Stocks from "./components/Stocks";
-import { columnsUser, columnsProducts, columnsOrders, columnsStocks } from "./variables/columnsData";
+import {
+  columnsUser,
+  columnsProducts,
+  columnsOrders,
+  columnsStocks,
+} from "./variables/columnsData";
 
 const Tables = () => {
   const [userData, setUserData] = useState([]);
@@ -66,7 +71,7 @@ const Tables = () => {
     <div>
       <div className="mt-5">
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
           onClick={Refresh}
         >
           Refresh

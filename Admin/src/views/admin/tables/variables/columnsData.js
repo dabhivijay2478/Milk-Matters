@@ -27,14 +27,6 @@ export const columnsProducts = [
     accessor: "title",
   },
   {
-    Header: "Company",
-    accessor: "company",
-  },
-  {
-    Header: "Price",
-    accessor: "price",
-  },
-  {
     Header: "Available-Stock",
     accessor: "availableStock",
   },
@@ -61,7 +53,6 @@ export const columnsOrders = [
     Header: "Contact",
     accessor: "contact",
   },
-
 ];
 
 export const columnsStocks = [
@@ -77,5 +68,4 @@ export const columnsStocks = [
     Header: "Sell-Stock",
     accessor: "sellStock",
   },
-
 ];

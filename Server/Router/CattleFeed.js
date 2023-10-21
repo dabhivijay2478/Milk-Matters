@@ -36,6 +36,7 @@ router.get('/products/:id', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
 // Route to get all products
 router.get('/get-products', async (req, res) => {
     try {

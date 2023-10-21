@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 import {
   useGlobalFilter,
@@ -6,13 +6,11 @@ import {
   useSortBy,
   useTable,
 } from "react-table";
-import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
+
 import { useMemo } from "react";
 
 import { CSVLink } from "react-csv";
-
-
-
+import ManageOrders from "../manages/ManageOrders";
 
 const Orders = (props) => {
   const { columnsData, tableData } = props;
@@ -41,22 +39,19 @@ const Orders = (props) => {
   initialState.pageSize = 5;
 
   return (
-    <div className='w-full h-full p-4 rounded-lg border border-solid border-teal-500'>
-
-
+    <div className="h-full w-full rounded-lg border border-solid border-teal-500 p-4">
       <div extra="w-full sm:overflow-auto p-4">
-        <div class="relative flex items-center justify-between" >
+        <div class="relative flex items-center justify-between">
           <div class="text-xl font-bold text-navy-700 dark:text-white">
             Orders Table
           </div>
           <div className="mt-4">
-
             <CSVLink
               data={page.map((row) => ({
-                "Name": row.original.name,
-                "DairyCode": row.original.dairyCode,
+                Name: row.original.name,
+                DairyCode: row.original.dairyCode,
                 "Product-Name": row.original.product.attributes.title,
-                "Contact": row.original.contact,
+                Contact: row.original.contact,
                 "Product-Quantity": row.original.productQuantity,
               }))}
               headers={[
@@ -69,11 +64,10 @@ const Orders = (props) => {
               filename="order_data.csv"
               className="text-blue-500 hover:underline"
             >
-
               Export to CSV
             </CSVLink>
           </div>
-        </div >
+        </div>
 
         <div class="mt-8 h-full overflow-x-scroll xl:overflow-hidden">
           <table {...getTableProps()} className="w-full">
@@ -97,6 +91,8 @@ const Orders = (props) => {
             <tbody {...getTableBodyProps()}>
               {page.map((row, index) => {
                 prepareRow(row);
+                const OrderData = row.original;
+
                 return (
                   <tr {...row.getRowProps()} key={index}>
                     {row.cells.map((cell, index) => {
@@ -110,28 +106,27 @@ const Orders = (props) => {
                       } else if (cell.column.Header === "DairyCode") {
                         data = (
                           <div className="flex items-center ">
-
                             <p className="text-sm font-bold text-navy-700 dark:text-white">
                               {cell.value}
                             </p>
                           </div>
                         );
-                      }
-                      else if (cell.column.Header === "Product-Name") {
-                        data = (row.original.product.attributes.title);
-
-                      }
-                      else if (cell.column.Header === "Contact") {
+                      } else if (cell.column.Header === "Product-Name") {
+                        data = row.original.product.attributes.title;
+                      } else if (cell.column.Header === "Contact") {
                         data = (
                           <p className="text-sm font-bold text-navy-700 dark:text-white">
                             {cell.value}
                           </p>
                         );
+                      } else if (cell.column.Header === "Product-Quantity") {
+                        data = cell.value;
                       }
-                      else if (cell.column.Header === "Product-Quantity") {
-                        data = (cell.value);
-                      }
-
+                      <>
+                        <td>
+                          <ManageOrders />
+                        </td>
+                      </>
                       return (
                         <td
                           className="pt-[14px] pb-[18px] sm:text-[14px]"
@@ -140,15 +135,19 @@ const Orders = (props) => {
                         >
                           {data}
                         </td>
+
                       );
                     })}
+                    <td>
+                      <ManageOrders OrderData={OrderData} />
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
         </div>
-      </div >
+      </div>
     </div>
   );
 };

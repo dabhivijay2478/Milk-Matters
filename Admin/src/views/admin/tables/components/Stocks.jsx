@@ -34,7 +34,7 @@ const Stocks = (props) => {
   initialState.pageSize = 5;
 
   return (
-    <div className="w-full pb-10 p-4 h-full rounded-lg border border-solid border-teal-500 caret-white">
+    <div className="h-full w-full rounded-lg border border-solid border-teal-500 p-4 pb-10 caret-white">
       <header className="relative flex items-center justify-between">
         <div className="text-xl font-bold text-navy-700 dark:text-white">
           Stocks Table
@@ -45,17 +45,11 @@ const Stocks = (props) => {
               "Product-Name": row.original.product.attributes.title,
               "Available-Stock": row.original.availableStock,
               "Sell-Stock": row.original.sellStock,
-
             }))}
-            headers={[
-              "Product-Name",
-              "Available-Stock",
-              "Sell-Stock"
-            ]}
+            headers={["Product-Name", "Available-Stock", "Sell-Stock"]}
             filename="Stocks_Data.csv"
             className="text-blue-500 hover:underline"
           >
-
             Export to CSV
           </CSVLink>
         </div>

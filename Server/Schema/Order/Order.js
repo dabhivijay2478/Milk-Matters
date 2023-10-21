@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Product = require('../CattleFeed/Product'); 
+const Product = require('../CattleFeed/Product');
 
 const orderSchema = new Schema({
   dairyCode: { type: Number, required: true },
@@ -8,7 +8,7 @@ const orderSchema = new Schema({
   contact: { type: Number, required: true },
   address: { type: String },
   product: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Product',
     required: true
   },

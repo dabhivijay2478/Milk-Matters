@@ -8,9 +8,6 @@ import DataTables from "views/admin/tables";
 import AddUser from "views/admin/User";
 import AddCatteFeeds from "views/admin/Cattefeeds";
 
-
-
-
 // Auth Imports
 import SignIn from "views/auth/SignIn";
 
@@ -23,7 +20,6 @@ import {
   MdLock,
   MdShoppingBag,
 } from "react-icons/md";
-
 
 const routes = [
   {
