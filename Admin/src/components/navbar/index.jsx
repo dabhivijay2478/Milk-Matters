@@ -2,6 +2,7 @@ import React from "react";
 import Dropdown from "components/dropdown";
 import { FiAlignJustify } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useAuth } from 'Context/AuthContext';
 
 import { BsArrowBarUp } from "react-icons/bs";
 
@@ -10,9 +11,14 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import avatar from "assets/img/avatars/avatar4.png";
 
 const Navbar = (props) => {
+  const { logout } = useAuth();
+
   const { onOpenSidenav, brandText } = props;
   const [darkmode, setDarkmode] = React.useState(false);
+  const handleLogout = () => {
+    logout();
 
+  }
   return (
     <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#0b14374d]">
       <div className="ml-[6px]">
@@ -148,12 +154,13 @@ const Navbar = (props) => {
                   Profile Settings
                 </Link>
 
-                <a
-                  href=" "
+                <Link
+                  to="/auth/sign-in"
+                  onClick={handleLogout}
                   className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
                 >
                   Log Out
-                </a>
+                </Link>
               </div>
             </div>
           }
