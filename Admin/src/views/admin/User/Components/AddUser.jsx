@@ -106,7 +106,7 @@ const AddUser = () => {
         <div className="mx-auto mt-6 w-full px-4 lg:w-8/12">
           <div className="bg-blueGray-100 relative mb-6 flex w-full min-w-0 flex-col break-words rounded-lg border-0 shadow-lg">
             <div className="mb-0 rounded-t bg-white px-6 py-6">
-              <div className="flex justify between text-center">
+              <div className="justify between flex text-center">
                 <h6 className="text-blueGray-700 text-xl font-bold">
                   Add User
                 </h6>

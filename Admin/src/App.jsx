@@ -1,7 +1,12 @@
 // App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth } from 'Context/AuthContext';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { useAuth } from "Context/AuthContext";
 import AdminLayout from "layouts/admin";
 import AuthLayout from "layouts/auth";
 
@@ -15,7 +20,10 @@ function App() {
         {isAuthenticated ? (
           <Route path="admin/*" element={<AdminLayout />} />
         ) : (
-          <Route path="admin/*" element={<Navigate to="/auth/sign-in" replace />} />
+          <Route
+            path="admin/*"
+            element={<Navigate to="/auth/sign-in" replace />}
+          />
         )}
         <Route path="/" element={<Navigate to="/admin" replace />} />
       </Routes>

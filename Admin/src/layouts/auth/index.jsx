@@ -1,4 +1,3 @@
-
 import { Link, Routes, Route, Navigate } from "react-router-dom";
 import routes from "routes.js";
 import FixedPlugin from "components/fixedPlugin/FixedPlugin";
@@ -50,9 +49,7 @@ export default function Auth() {
                     element={<Navigate to="/auth/sign-in" replace />}
                   />
                 </Routes>
-              
               </div>
-       
             </div>
           </div>
         </main>

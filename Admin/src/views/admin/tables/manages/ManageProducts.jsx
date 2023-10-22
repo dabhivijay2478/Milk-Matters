@@ -196,22 +196,19 @@ export default function ManageProducts(props) {
                 setErrors({});
                 setImages([]);
                 setImageError("");
-                closeModal()
+                closeModal();
               } else {
                 console.error("Error:", productResponse.data.error);
-                closeModal()
-
+                closeModal();
               }
             } else {
               console.error("No files were uploaded");
-              closeModal()
-
+              closeModal();
             }
           }
         } catch (error) {
           console.error(error);
-          closeModal()
-
+          closeModal();
         }
       }
     }
@@ -228,17 +225,15 @@ export default function ManageProducts(props) {
           const response = await axios.delete(`/product-delete/${productID}`);
 
           if (response.data.success) {
-            closeModal()
+            closeModal();
           } else {
             console.error("Error:", response.data.error);
-            closeModal()
-
+            closeModal();
           }
         }
       } catch (error) {
         console.error(error);
-        closeModal()
-
+        closeModal();
       }
     }
   };
@@ -267,10 +262,11 @@ export default function ManageProducts(props) {
                       </div>
                       <div className="mx-auto max-w-sm md:w-2/3">
                         <button
-                          className={`btn ${images.length > 0
-                            ? "text-green-600"
-                            : "rounded-lg border-solid border-teal-500 text-blue-500 hover:text-blue-600"
-                            }`}
+                          className={`btn ${
+                            images.length > 0
+                              ? "text-green-600"
+                              : "rounded-lg border-solid border-teal-500 text-blue-500 hover:text-blue-600"
+                          }`}
                           onClick={open}
                         >
                           {images.length > 0
@@ -309,10 +305,11 @@ export default function ManageProducts(props) {
                                 }) => (
                                   <div className="upload__image-wrapper px-2 py-3">
                                     <button
-                                      className={`btn ${isDragging
-                                        ? "border-red-600 bg-white text-red-600"
-                                        : "m-5 border-blue-500 bg-white text-blue-500 hover:border-blue-600 hover:text-blue-600"
-                                        }`}
+                                      className={`btn ${
+                                        isDragging
+                                          ? "border-red-600 bg-white text-red-600"
+                                          : "m-5 border-blue-500 bg-white text-blue-500 hover:border-blue-600 hover:text-blue-600"
+                                      }`}
                                       onClick={onImageUpload}
                                       {...dragProps}
                                     >
@@ -364,10 +361,11 @@ export default function ManageProducts(props) {
                       </label>
                       <div className="flex">
                         <input
-                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${isEditing
-                            ? "border-red rounded"
-                            : "rounded-lg border-red-200"
-                            } mb-3 py-3 px-4`}
+                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${
+                            isEditing
+                              ? "border-red rounded"
+                              : "rounded-lg border-red-200"
+                          } mb-3 py-3 px-4`}
                           id="grid-first-name"
                           type="text"
                           placeholder="Product Name"
@@ -391,10 +389,11 @@ export default function ManageProducts(props) {
                       </label>
                       <div className="flex">
                         <input
-                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${isEditing
-                            ? "border-grey-lighter rounded"
-                            : "border-grey-lighter rounded-lg"
-                            } py-3 px-4`}
+                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${
+                            isEditing
+                              ? "border-grey-lighter rounded"
+                              : "border-grey-lighter rounded-lg"
+                          } py-3 px-4`}
                           id="grid-last-name"
                           type="text"
                           placeholder="Product Company"
@@ -420,10 +419,11 @@ export default function ManageProducts(props) {
                       </label>
                       <div className="flex">
                         <textarea
-                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${isEditing
-                            ? "border-grey-lighter rounded"
-                            : "border-grey-lighter rounded-lg"
-                            } mb-3 py-3 px-4`}
+                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${
+                            isEditing
+                              ? "border-grey-lighter rounded"
+                              : "border-grey-lighter rounded-lg"
+                          } mb-3 py-3 px-4`}
                           id="Description"
                           placeholder="Description"
                           value={description}
@@ -448,10 +448,11 @@ export default function ManageProducts(props) {
                       </label>
                       <div className="flex">
                         <input
-                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${isEditing
-                            ? "border-grey-lighter rounded"
-                            : "border-grey-lighter rounded-lg"
-                            } py-3 px-4`}
+                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${
+                            isEditing
+                              ? "border-grey-lighter rounded"
+                              : "border-grey-lighter rounded-lg"
+                          } py-3 px-4`}
                           id="Price"
                           type="number"
                           placeholder="Price"
@@ -476,10 +477,11 @@ export default function ManageProducts(props) {
                       </label>
                       <div className="flex">
                         <input
-                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${isEditing
-                            ? "border-grey-lighter rounded"
-                            : "border-grey-lighter rounded-lg"
-                            } py-3 px-4`}
+                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${
+                            isEditing
+                              ? "border-grey-lighter rounded"
+                              : "border-grey-lighter rounded-lg"
+                          } py-3 px-4`}
                           id="Packing"
                           type="number"
                           placeholder="Packing"
@@ -503,10 +505,11 @@ export default function ManageProducts(props) {
                       </label>
                       <div className="flex">
                         <input
-                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${isEditing
-                            ? "border-grey-lighter rounded"
-                            : "border-grey-lighter rounded-lg"
-                            } py-3 px-4`}
+                          className={`bg-grey-lighter text-grey-darker block w-full appearance-none border ${
+                            isEditing
+                              ? "border-grey-lighter rounded"
+                              : "border-grey-lighter rounded-lg"
+                          } py-3 px-4`}
                           id="Stock"
                           type="number"
                           placeholder="Stock"

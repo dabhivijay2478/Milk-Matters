@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useAuth } from "Context/AuthContext";
 
 const Profile = () => {
   const [fullName, setFullName] = useState("");
@@ -12,16 +13,14 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
   const [errors, setErrors] = useState({});
-
+  const { userID } = useAuth();
+  console.log(userID);
   useEffect(() => {
     // Fetch user details from the API
     const fetchUserDetails = async () => {
-      const dairyCode = 1232; // Replace with the actual dairy code
-      const userId = "6531472ec0ce273c0ce3d2f2"; // Replace with the actual user ID
-
       try {
         setLoading(true);
-        const response = await axios.get(`/Getuser/${dairyCode}/${userId}`);
+        const response = await axios.get(`/Getuser/${userID}`);
         const userData = response.data;
         setFullName(userData.name);
         setDairyCode(userData.dairyCode);
@@ -123,8 +122,9 @@ const Profile = () => {
                       <input
                         type="text"
                         id="full_name"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
-                          }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
+                          isEditable ? "" : "bg-gray-200"
+                        }`}
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="Full Name"
@@ -146,8 +146,9 @@ const Profile = () => {
                       <input
                         type="number"
                         id="DairyCode"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
-                          }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
+                          isEditable ? "" : "bg-gray-200"
+                        }`}
                         value={dairyCode}
                         onChange={(e) => setDairyCode(e.target.value)}
                         placeholder="DairyCode"
@@ -169,8 +170,9 @@ const Profile = () => {
                       <input
                         type="email"
                         id="email"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
-                          }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
+                          isEditable ? "" : "bg-gray-200"
+                        }`}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email address"
@@ -198,8 +200,9 @@ const Profile = () => {
                       <input
                         type="number"
                         id="contact"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
-                          }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
+                          isEditable ? "" : "bg-gray-200"
+                        }`}
                         value={contact}
                         onChange={(e) => setContact(e.target.value)}
                         placeholder="Contact"
@@ -221,8 +224,9 @@ const Profile = () => {
                       <input
                         type="text"
                         id="address"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
-                          }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
+                          isEditable ? "" : "bg-gray-200"
+                        }`}
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                         placeholder="Address"
@@ -244,8 +248,9 @@ const Profile = () => {
                       <input
                         type="text"
                         id="city"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
-                          }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
+                          isEditable ? "" : "bg-gray-200"
+                        }`}
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                         placeholder="City"
@@ -259,8 +264,9 @@ const Profile = () => {
                       <select
                         name="userRole"
                         id="userRole"
-                        className={`bg-transparent w-full appearance-none px-4 text-gray-800 outline-none ${isEditable ? "" : "bg-gray-200"
-                          }`}
+                        className={`bg-transparent w-full appearance-none px-4 text-gray-800 outline-none ${
+                          isEditable ? "" : "bg-gray-200"
+                        }`}
                         value={userRole}
                         onChange={(e) => setUserRole(e.target.value)}
                         disabled

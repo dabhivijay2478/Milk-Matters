@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Card from 'components/card';
-import axios from 'axios';
-import PieChart from 'components/charts/PieChart';
+import React, { useState, useEffect } from "react";
+import Card from "components/card";
+import axios from "axios";
+import PieChart from "components/charts/PieChart";
 
 const PieChartCard = () => {
   const [chartData, setChartData] = useState({
@@ -13,7 +13,7 @@ const PieChartCard = () => {
 
   useEffect(() => {
     axios
-      .get('/get-products')
+      .get("/get-products")
       .then((response) => {
         const products = response.data.products;
 
@@ -49,8 +49,6 @@ const PieChartCard = () => {
             Cattle Feed
           </h4>
         </div>
-
-
       </div>
       <div className="mb-auto flex h-[220px] w-full items-center justify-center">
         {loading ? ( // Show loading indicator while data is being fetched

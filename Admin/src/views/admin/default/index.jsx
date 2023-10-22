@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import MiniCalendar from "components/calendar/MiniCalendar";
 import WeeklyRevenue from "views/admin/default/components/WeeklyRevenue";
 import TotalSpent from "views/admin/default/components/TotalSpent";
@@ -9,8 +9,7 @@ import { MdPerson, MdShoppingBag, MdShoppingCart } from "react-icons/md";
 
 import Widget from "components/widget/Widget";
 
-import { RiStockLine } from 'react-icons/ri';
-
+import { RiStockLine } from "react-icons/ri";
 
 const Dashboard = () => {
   const [userCount, setUserCount] = useState(null);
@@ -18,20 +17,16 @@ const Dashboard = () => {
   const [Product, setProductcount] = useState(null);
   const [Inventory, setInventoryCount] = useState(null);
 
-
-
-
   useEffect(() => {
     fetchUserCount();
-    fetchOrderCount()
-    fetchProductCount()
-    countInventory()
+    fetchOrderCount();
+    fetchProductCount();
+    countInventory();
   }, []);
-
 
   const fetchUserCount = async () => {
     try {
-      const response = await axios.get('/countUsers');
+      const response = await axios.get("/countUsers");
       setUserCount(response.data.count);
     } catch (error) {
       console.log(error);
@@ -39,7 +34,7 @@ const Dashboard = () => {
   };
   const fetchOrderCount = async () => {
     try {
-      const response = await axios.get('/countOrder');
+      const response = await axios.get("/countOrder");
       setOrdercount(response.data.count);
     } catch (error) {
       console.log(error);
@@ -47,7 +42,7 @@ const Dashboard = () => {
   };
   const fetchProductCount = async () => {
     try {
-      const response = await axios.get('/countProduct');
+      const response = await axios.get("/countProduct");
       setProductcount(response.data.count);
     } catch (error) {
       console.log(error);
@@ -55,7 +50,7 @@ const Dashboard = () => {
   };
   const countInventory = async () => {
     try {
-      const response = await axios.get('/countInventory');
+      const response = await axios.get("/countInventory");
       setInventoryCount(response.data.count);
     } catch (error) {
       console.log(error);
@@ -94,23 +89,18 @@ const Dashboard = () => {
         /> */}
       </div>
 
-
       <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
         <TotalSpent />
         <WeeklyRevenue />
       </div>
 
-
       <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
         <div></div>
-
 
         <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
           {/* <DailyTraffic /> */}
           <PieChartCard />
         </div>
-
-
 
         <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
           <div className="grid grid-cols-1 rounded-[20px]">

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { MdBarChart, MdPerson } from "react-icons/md";
 import Card from "components/card";
 import LineChart from "components/charts/LineChart";
@@ -13,11 +13,12 @@ const TotalSpent = () => {
 
   const fetchData = async () => {
     try {
-      const [farmersResponse, usersResponse, veterinariansResponse] = await Promise.all([
-        axios.get('/get-farmers'),
-        axios.get('/get-users'),
-        axios.get('/get-veterinarians'),
-      ]);
+      const [farmersResponse, usersResponse, veterinariansResponse] =
+        await Promise.all([
+          axios.get("/get-farmers"),
+          axios.get("/get-users"),
+          axios.get("/get-veterinarians"),
+        ]);
 
       const farmersData = farmersResponse.data;
       const usersData = usersResponse.data;
@@ -29,7 +30,7 @@ const TotalSpent = () => {
         veterinarians: veterinariansData,
       });
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -38,16 +39,16 @@ const TotalSpent = () => {
   }, []);
 
   const data = {
-    labels: ['Farmers', 'Users', 'Veterinarians'],
+    labels: ["Farmers", "Users", "Veterinarians"],
     datasets: [
       {
-        label: 'User Data',
+        label: "User Data",
         data: [
           userData.farmers.length,
           userData.users.length,
           userData.veterinarians.length,
         ],
-        borderColor: 'blue',
+        borderColor: "blue",
         borderWidth: 2,
         fill: false,
       },

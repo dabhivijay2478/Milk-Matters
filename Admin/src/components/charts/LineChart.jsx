@@ -1,5 +1,5 @@
-import React from 'react';
-import { Line } from 'react-chartjs-2';
+import React from "react";
+import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,7 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
+} from "chart.js";
 
 // import faker from 'faker';
 
@@ -31,9 +31,7 @@ const LineChart = ({ data }) => {
     },
   };
 
-  return (
-    <Line data={data} options={options} />
-  );
+  return <Line data={data} options={options} />;
 };
 
 export default LineChart;

@@ -126,7 +126,7 @@ const Orders = (props) => {
                         <td>
                           <ManageOrders />
                         </td>
-                      </>
+                      </>;
                       return (
                         <td
                           className="pt-[14px] pb-[18px] sm:text-[14px]"
@@ -135,7 +135,6 @@ const Orders = (props) => {
                         >
                           {data}
                         </td>
-
                       );
                     })}
                     <td>

@@ -103,8 +103,9 @@ const Order = () => {
                       type="text"
                       name="full_name"
                       id="full_name"
-                      className={`mt-1 h-10 w-full rounded border px-4 ${errors.fullName ? "border-red-500" : "bg-gray-50"
-                        }`}
+                      className={`mt-1 h-10 w-full rounded border px-4 ${
+                        errors.fullName ? "border-red-500" : "bg-gray-50"
+                      }`}
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="Full Name"
@@ -120,8 +121,9 @@ const Order = () => {
                       type="number"
                       name="DairyCode"
                       id="DairyCode"
-                      className={`mt-1 h-10 w-full rounded border px-4 ${errors.dairyCode ? "border-red-500" : "bg-gray-50"
-                        }`}
+                      className={`mt-1 h-10 w-full rounded border px-4 ${
+                        errors.dairyCode ? "border-red-500" : "bg-gray-50"
+                      }`}
                       value={dairyCode}
                       onChange={(e) => setDairyCode(e.target.value)}
                       placeholder="DairyCode"
@@ -137,8 +139,9 @@ const Order = () => {
                       type="number"
                       name="Contact"
                       id="Contact"
-                      className={`mt-1 h-10 w-full rounded border px-4 ${errors.contact ? "border-red-500" : "bg-gray-50"
-                        }`}
+                      className={`mt-1 h-10 w-full rounded border px-4 ${
+                        errors.contact ? "border-red-500" : "bg-gray-50"
+                      }`}
                       value={contact}
                       onChange={(e) => setContact(e.target.value)}
                       placeholder="Contact No"
@@ -153,8 +156,9 @@ const Order = () => {
                       type="text"
                       name="address"
                       id="address"
-                      className={`mt-1 h-10 w-full rounded border px-4 ${errors.address ? "border-red-500" : "bg-gray-50"
-                        }`}
+                      className={`mt-1 h-10 w-full rounded border px-4 ${
+                        errors.address ? "border-red-500" : "bg-gray-50"
+                      }`}
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                       placeholder="Address"
@@ -166,7 +170,11 @@ const Order = () => {
 
                   <div className="md:col-span-2">
                     <label htmlFor="country">Product</label>
-                    <div className={`mt-1 flex h-10 items-center rounded border px-4 ${errors.product ? "border-red-500" : "bg-gray-50"}`}>
+                    <div
+                      className={`mt-1 flex h-10 items-center rounded border px-4 ${
+                        errors.product ? "border-red-500" : "bg-gray-50"
+                      }`}
+                    >
                       <select
                         name="country"
                         id="country"
@@ -196,8 +204,9 @@ const Order = () => {
                       type="number"
                       name="Quantity"
                       id="Quantity"
-                      className={`mt-1 h-10 w-full rounded border px-4 ${errors.quantity ? "border-red-500" : "bg-gray-50"
-                        }`}
+                      className={`mt-1 h-10 w-full rounded border px-4 ${
+                        errors.quantity ? "border-red-500" : "bg-gray-50"
+                      }`}
                       value={quantity}
                       onChange={(e) => setQuantity(e.target.value)}
                       placeholder="1235"

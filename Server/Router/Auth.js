@@ -73,7 +73,7 @@ router.post("/user-login", async (req, res) => {
 
 router.put('/users/:id', async (req, res) => {
     const { id } = req.params;
-    const { name, address, contact, role, email } = req.body;  
+    const { name, address, contact, role, email } = req.body;
 
     try {
         const user = await User.findOne({ _id: id });
@@ -97,10 +97,10 @@ router.put('/users/:id', async (req, res) => {
 
 
 
-router.get('/Getuser/:dairyCode/:userId', async (req, res) => {
+router.get('/Getuser/:userId', async (req, res) => {
     const { dairyCode, userId } = req.params;
     try {
-        const user = await User.findOne({ dairyCode, _id: userId });
+        const user = await User.findOne({ _id: userId });
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
