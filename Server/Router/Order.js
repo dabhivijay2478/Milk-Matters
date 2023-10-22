@@ -121,4 +121,15 @@ router.delete("/orders/:orderId", async (req, res) => {
     }
 });
 
+router.get('/countOrder', async (req, res) => {
+    try {
+        const OrderCount = await Order.countDocuments();
+        res.status(200).json({ count: OrderCount });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Unable to count Order' });
+    }
+});
+
+
 module.exports = router;

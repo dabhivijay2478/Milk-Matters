@@ -9,6 +9,7 @@ const AddUser = () => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [userRole, setUserRole] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
@@ -36,36 +37,66 @@ const AddUser = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const validationErrors = {};
 
-    // Create an object with the data you want to send
-    const userData = {
-      dairyCode,
-      name: fullName,
-      email,
-      address,
-      contact,
-      role: userRole,
-      password: contact,
-    };
+    // Validate the input fields
+    if (fullName.trim() === "") {
+      validationErrors.fullName = "Full Name is required";
+    }
+    if (dairyCode.trim() === "") {
+      validationErrors.dairyCode = "DairyCode is required";
+    }
+    if (email.trim() === "") {
+      validationErrors.email = "Email is required";
+    }
+    if (contact.trim() === "") {
+      validationErrors.contact = "Contact No is required";
+    }
+    if (address.trim() === "") {
+      validationErrors.address = "Address is required";
+    }
+    if (city.trim() === "") {
+      validationErrors.city = "City is required";
+    }
+    if (userRole === "") {
+      validationErrors.userRole = "User Role is required";
+    }
 
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/user-create",
-        userData
-      );
-      if (response.data.success) {
-        setFullName("");
-        setDairyCode("");
-        setEmail("");
-        setAddress("");
-        setContact("");
-        setUserRole("");
-        console.log(response.data.message);
-      } else {
-        console.error(response.data.error);
+    if (Object.keys(validationErrors).length > 0) {
+      // If there are validation errors, don't submit the form
+      setErrors(validationErrors);
+    } else {
+      // Create an object with the data you want to send
+      const userData = {
+        dairyCode,
+        name: fullName,
+        email,
+        address,
+        contact,
+        role: userRole,
+        password: contact,
+      };
+
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/user-create",
+          userData
+        );
+        if (response.data.success) {
+          setFullName("");
+          setDairyCode("");
+          setEmail("");
+          setAddress("");
+          setContact("");
+          setUserRole("");
+          setErrors({});
+          console.log(response.data.message);
+        } else {
+          console.error(response.data.error);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
   };
 
@@ -75,7 +106,7 @@ const AddUser = () => {
         <div className="mx-auto mt-6 w-full px-4 lg:w-8/12">
           <div className="bg-blueGray-100 relative mb-6 flex w-full min-w-0 flex-col break-words rounded-lg border-0 shadow-lg">
             <div className="mb-0 rounded-t bg-white px-6 py-6">
-              <div className="flex justify-between text-center">
+              <div className="flex justify between text-center">
                 <h6 className="text-blueGray-700 text-xl font-bold">
                   Add User
                 </h6>
@@ -103,6 +134,9 @@ const AddUser = () => {
                         onChange={handleFullNameChange}
                         placeholder="Full Name"
                       />
+                      {errors.fullName && (
+                        <p className="text-red-500">{errors.fullName}</p>
+                      )}
                     </div>
                   </div>
                   <div className="w-full px-4 lg:w-6/12">
@@ -121,6 +155,9 @@ const AddUser = () => {
                         onChange={handleDairyCodeChange}
                         placeholder="DairyCode"
                       />
+                      {errors.dairyCode && (
+                        <p className="text-red-500">{errors.dairyCode}</p>
+                      )}
                     </div>
                   </div>
                   <div className="w-full px-4 lg:w-6/12">
@@ -139,6 +176,9 @@ const AddUser = () => {
                         onChange={handleEmailChange}
                         placeholder="Email address"
                       />
+                      {errors.email && (
+                        <p className="text-red-500">{errors.email}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -163,6 +203,9 @@ const AddUser = () => {
                         onChange={handleContactChange}
                         placeholder="Contact"
                       />
+                      {errors.contact && (
+                        <p className="text-red-500">{errors.contact}</p>
+                      )}
                     </div>
                   </div>
                   <div className="lg:w-12/12 w-full px-4">
@@ -181,6 +224,9 @@ const AddUser = () => {
                         onChange={handleAddressChange}
                         placeholder="Address"
                       />
+                      {errors.address && (
+                        <p className="text-red-500">{errors.address}</p>
+                      )}
                     </div>
                   </div>
                   <div className="w-full px-4 lg:w-4/12">
@@ -199,6 +245,9 @@ const AddUser = () => {
                         onChange={handleCityChange}
                         placeholder="City"
                       />
+                      {errors.city && (
+                        <p className="text-red-500">{errors.city}</p>
+                      )}
                     </div>
                   </div>
                   <div className="md:col-span-2">
@@ -213,17 +262,11 @@ const AddUser = () => {
                       >
                         <option value="">Select a role</option>
                         <option value="farmer">Farmer</option>
-
                         <option value="veterinarian">Veterinarian</option>
                       </select>
-                      <button
-                        tabIndex="-1"
-                        className="cursor-pointer text-gray-300 outline-none transition-all hover:text-red-600 focus:outline-none"
-                      ></button>
-                      <button
-                        tabIndex="-1"
-                        className="cursor-pointer border-l border-gray-200 text-gray-300 outline-none transition-all hover:text-blue-600 focus:outline-none"
-                      ></button>
+                      {errors.userRole && (
+                        <p className="text-red-500">{errors.userRole}</p>
+                      )}
                     </div>
                   </div>
                 </div>

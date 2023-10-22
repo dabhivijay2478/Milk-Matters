@@ -1,16 +1,38 @@
-import Chart from "react-apexcharts";
+import React from 'react';
+import { Line } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 
-const LineChart = (props) => {
-  const { series, options } = props;
+// import faker from 'faker';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+const LineChart = ({ data }) => {
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
 
   return (
-    <Chart
-      options={options}
-      type="line"
-      width="100%"
-      height="100%"
-      series={series}
-    />
+    <Line data={data} options={options} />
   );
 };
 

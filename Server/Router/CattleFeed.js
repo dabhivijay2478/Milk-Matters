@@ -85,4 +85,14 @@ router.delete('/product-delete/:id', async (req, res) => {
     }
 });
 
+router.get('/countProduct', async (req, res) => {
+    try {
+        const ProductCount = await Product.countDocuments();
+        res.status(200).json({ count: ProductCount });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Unable to count Product' });
+    }
+});
+
 module.exports = router;

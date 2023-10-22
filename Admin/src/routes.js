@@ -19,6 +19,7 @@ import {
   MdPerson,
   MdLock,
   MdShoppingBag,
+  MdPersonAdd,
 } from "react-icons/md";
 
 const routes = [
@@ -30,10 +31,10 @@ const routes = [
     component: <MainDashboard />,
   },
   {
-    name: "User's",
+    name: "Add User's",
     layout: "/admin",
     path: "User",
-    icon: <MdPerson className="h-6 w-6" />,
+    icon: <MdPersonAdd className="h-6 w-6" />,
     component: <AddUser />,
   },
   {

@@ -11,6 +11,7 @@ const Profile = () => {
   const [userRole, setUserRole] = useState("");
   const [loading, setLoading] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     // Fetch user details from the API
@@ -42,26 +43,49 @@ const Profile = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const userData = {
-      name: fullName,
-      dairyCode: dairyCode,
-      email: email,
-      contact: contact,
-      address: address,
-      city: address,
-      role: userRole,
-    };
+    const validationErrors = {};
 
-    try {
-      const response = await axios.put(`/users/${dairyCode}`, userData);
-      if (response.data.success) {
-        console.log("User data updated successfully");
-        setIsEditable(false); // Disable editing after updating
-      } else {
-        console.error("Failed to update user data");
+    // Add validation logic for each field
+    if (fullName.trim() === "") {
+      validationErrors.fullName = "Full Name is required";
+    }
+    if (dairyCode.trim() === "") {
+      validationErrors.dairyCode = "DairyCode is required";
+    }
+    if (email.trim() === "") {
+      validationErrors.email = "Email is required";
+    }
+    if (contact.trim() === "") {
+      validationErrors.contact = "Contact No is required";
+    }
+    if (address.trim() === "") {
+      validationErrors.address = "Address is required";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      const userData = {
+        name: fullName,
+        dairyCode: dairyCode,
+        email: email,
+        contact: contact,
+        address: address,
+        city: address,
+        role: userRole,
+      };
+
+      try {
+        const response = await axios.put(`/users/${dairyCode}`, userData);
+        if (response.data.success) {
+          console.log("User data updated successfully");
+          setIsEditable(false); // Disable editing after updating
+        } else {
+          console.error("Failed to update user data");
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
   };
 
@@ -99,14 +123,16 @@ const Profile = () => {
                       <input
                         type="text"
                         id="full_name"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
-                          isEditable ? "" : "bg-gray-200"
-                        }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
+                          }`}
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="Full Name"
                         readOnly={!isEditable}
                       />
+                      {errors.fullName && (
+                        <p className="text-red-500">{errors.fullName}</p>
+                      )}
                     </div>
                   </div>
                   <div className="w-full px-4 lg:w-6/12">
@@ -120,14 +146,16 @@ const Profile = () => {
                       <input
                         type="number"
                         id="DairyCode"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
-                          isEditable ? "" : "bg-gray-200"
-                        }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
+                          }`}
                         value={dairyCode}
                         onChange={(e) => setDairyCode(e.target.value)}
                         placeholder="DairyCode"
                         readOnly={!isEditable}
                       />
+                      {errors.dairyCode && (
+                        <p className="text-red-500">{errors.dairyCode}</p>
+                      )}
                     </div>
                   </div>
                   <div className="w-full px-4 lg:w-6/12">
@@ -141,14 +169,16 @@ const Profile = () => {
                       <input
                         type="email"
                         id="email"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
-                          isEditable ? "" : "bg-gray-200"
-                        }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
+                          }`}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email address"
                         readOnly={!isEditable}
                       />
+                      {errors.email && (
+                        <p className="text-red-500">{errors.email}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -168,14 +198,16 @@ const Profile = () => {
                       <input
                         type="number"
                         id="contact"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
-                          isEditable ? "" : "bg-gray-200"
-                        }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
+                          }`}
                         value={contact}
                         onChange={(e) => setContact(e.target.value)}
                         placeholder="Contact"
                         readOnly={!isEditable}
                       />
+                      {errors.contact && (
+                        <p className="text-red-500">{errors.contact}</p>
+                      )}
                     </div>
                   </div>
                   <div className="lg:w-12/12 w-full px-4">
@@ -189,14 +221,16 @@ const Profile = () => {
                       <input
                         type="text"
                         id="address"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
-                          isEditable ? "" : "bg-gray-200"
-                        }`}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
+                          }`}
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                         placeholder="Address"
                         readOnly={!isEditable}
                       />
+                      {errors.address && (
+                        <p className="text-red-500">{errors.address}</p>
+                      )}
                     </div>
                   </div>
                   <div className="w-full px-4 lg:w-4/12">
@@ -210,11 +244,10 @@ const Profile = () => {
                       <input
                         type="text"
                         id="city"
-                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${
-                          isEditable ? "" : "bg-gray-200"
-                        }`}
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
+                        className={`placeholder-blueGray-300 text-blueGray-600 w-full rounded border-0 bg-white px-3 py-3 text-sm shadow transition-all duration-150 ease-linear focus:outline-none focus:ring ${isEditable ? "" : "bg-gray-200"
+                          }`}
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
                         placeholder="City"
                         readOnly={!isEditable}
                       />
@@ -226,9 +259,8 @@ const Profile = () => {
                       <select
                         name="userRole"
                         id="userRole"
-                        className={`bg-transparent w-full appearance-none px-4 text-gray-800 outline-none ${
-                          isEditable ? "" : "bg-gray-200"
-                        }`}
+                        className={`bg-transparent w-full appearance-none px-4 text-gray-800 outline-none ${isEditable ? "" : "bg-gray-200"
+                          }`}
                         value={userRole}
                         onChange={(e) => setUserRole(e.target.value)}
                         disabled
@@ -237,14 +269,6 @@ const Profile = () => {
                         <option value="farmer">Farmer</option>
                         <option value="veterinarian">Veterinarian</option>
                       </select>
-                      <button
-                        tabIndex="-1"
-                        className="cursor-pointer text-gray-300 outline-none transition-all hover:text-red-600 focus:outline-none"
-                      ></button>
-                      <button
-                        tabIndex="-1"
-                        className="cursor-pointer border-l border-gray-200 text-gray-300 outline-none transition-all hover:text-blue-600 focus:outline-none"
-                      ></button>
                     </div>
                   </div>
                 </div>

@@ -64,4 +64,13 @@ router.get('/inventory-data', async (req, res) => {
     }
 });
 
+router.get('/countInventory', async (req, res) => {
+    try {
+        const InventoryCount = await Inventory.countDocuments();
+        res.status(200).json({ count: InventoryCount });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Unable to count Inventory' });
+    }
+});
 module.exports = router;

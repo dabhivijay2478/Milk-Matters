@@ -172,7 +172,15 @@ router.delete('/delete-user/:id', async (req, res) => {
     }
 });
 
-
+router.get('/countUsers', async (req, res) => {
+    try {
+        const userCount = await User.countDocuments();
+        res.status(200).json({ count: userCount });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Unable to count users' });
+    }
+});
 
 
 module.exports = router;

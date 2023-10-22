@@ -1,33 +1,48 @@
-import React, { Component } from "react";
-import Chart from "react-apexcharts";
+import React, { useEffect, useState } from "react";
+import ReactApexChart from "react-apexcharts";
 
-class BarChart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      chartData: [],
-      chartOptions: {},
-    };
-  }
+const BarChart = (props) => {
+  const [chartData, setChartData] = useState({
+    labels: [],
+    series: [],
+  });
 
-  componentDidMount() {
-    this.setState({
-      chartData: this.props.chartData,
-      chartOptions: this.props.chartOptions,
-    });
-  }
+  useEffect(() => {
+    const { orderData } = props;
 
-  render() {
-    return (
-      <Chart
-        options={this.state.chartOptions}
-        series={this.state.chartData}
-        type="bar"
-        width="100%"
-        height="100%"
-      />
-    );
-  }
-}
+    if (Array.isArray(orderData) && orderData.length > 0) {
+      const productTitles = {};
+
+      orderData.forEach((order) => {
+        const productTitle = order.product.attributes.title;
+        if (productTitles[productTitle]) {
+          productTitles[productTitle] += order.productQuantity;
+        } else {
+          productTitles[productTitle] = order.productQuantity;
+        }
+      });
+
+      const chartData = {
+        labels: Object.keys(productTitles),
+        series: [Object.values(productTitles)],
+      };
+
+      setChartData(chartData);
+    }
+  }, [props.orderData]);
+
+  return (
+    <ReactApexChart
+      options={{
+        xaxis: {
+          categories: chartData.labels,
+        },
+      }}
+      series={chartData.series}
+      type="bar"
+      height="100%"
+    />
+  );
+};
 
 export default BarChart;
