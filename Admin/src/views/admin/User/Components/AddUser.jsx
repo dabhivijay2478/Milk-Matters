@@ -78,10 +78,7 @@ const AddUser = () => {
       };
 
       try {
-        const response = await axios.post(
-          "http://localhost:5000/user-create",
-          userData
-        );
+        const response = await axios.post("/user-create", userData);
         if (response.data.success) {
           setFullName("");
           setDairyCode("");

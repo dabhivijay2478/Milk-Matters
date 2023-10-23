@@ -10,6 +10,7 @@ export const loader = (store) => () => {
     toast.warn('You must be logged in to checkout');
     return redirect('/login');
   }
+
   return null;
 };
 

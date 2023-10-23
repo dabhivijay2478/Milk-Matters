@@ -18,25 +18,28 @@ export const loader =
       const response = await queryClient.ensureQueryData(
         singleProductQuery(params.id)
       );
-      console.log(response);
-      return { product: response.data.attributes };
+
+      return { product: response.data.attributes, productId: response.data._id };
     };
 
 const SingleProduct = () => {
-  const { product } = useLoaderData();
+  const { product, productId } = useLoaderData();
 
   const { image, title, price, description, colors, company } = product;
+
   const dollarsAmount = formatPrice(price);
   const [productColor, setProductColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
+
+  console.log(productId); // Log the productId
 
   const handleAmount = (e) => {
     setAmount(parseInt(e.target.value));
   };
 
   const cartProduct = {
-    cartID: product.id + productColor,
-    productID: product.id,
+    cartID: product._id,
+    productID: productId,
     image,
     title,
     price,
@@ -67,7 +70,7 @@ const SingleProduct = () => {
       <div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
         {/* IMAGE */}
         <img
-          src={image}
+          src={`http://localhost:5000/getImage/${image}`}
           alt={title}
           className='w-96 h-96 object-cover rounded-lg lg:w-full'
         />

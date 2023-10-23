@@ -21,7 +21,9 @@ export default function SignIn() {
   const handleLogin = async () => {
     try {
       if (!dairyCode || !password) {
-        console.error("Please provide both DairyCode and Password.");
+        setError("error");
+        alert("Please provide both DairyCode and Password.");
+
         return;
       }
 
@@ -74,13 +76,12 @@ export default function SignIn() {
           placeholder="DairyCode*"
           value={dairyCode}
           onChange={handleDairyCodeChange}
-          className={`mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none ${
-            error === "error"
+          className={`mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none ${error === "error"
               ? "border-red-500 text-red-500 placeholder:text-red-500 dark:!border-red-400 dark:!text-red-400 dark:placeholder:!text-red-400"
               : error === "success"
-              ? "border-green-500 text-green-500 placeholder:text-green-500 dark:!border-green-400 dark:!text-green-400 dark:placeholder:!text-green-400"
-              : "border-gray-200 dark:!border-white/10 dark:text-white"
-          }`}
+                ? "border-green-500 text-green-500 placeholder:text-green-500 dark:!border-green-400 dark:!text-green-400 dark:placeholder:!text-green-400"
+                : "border-gray-200 dark:!border-white/10 dark:text-white"
+            }`}
         />
         <label
           className="${ mt-2 flex h-12 w-full items-center justify-center rounded-xl border border-gray-200 bg-white/0 p-3 text-sm
@@ -95,23 +96,22 @@ export default function SignIn() {
           placeholder="Password*"
           value={password}
           onChange={handlePasswordChange}
-          className={`mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none ${
-            error === "error"
+          className={`mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none ${error === "error"
               ? "border-red-500 text-red-500 placeholder:text-red-500 dark:!border-red-400 dark:!text-red-400 dark:placeholder:!text-red-400"
               : error === "success"
-              ? "border-green-500 text-green-500 placeholder:text-green-500 dark:!border-green-400 dark:!text-green-400 dark:placeholder:!text-green-400"
-              : "border-gray-200 dark:!border-white/10 dark:text-white"
-          }`}
+                ? "border-green-500 text-green-500 placeholder:text-green-500 dark:!border-green-400 dark:!text-green-400 dark:placeholder:!text-green-400"
+                : "border-gray-200 dark:!border-white/10 dark:text-white"
+            }`}
         />
 
-        <div className="justify between mb-4 flex items-center px-2">
+        {/* <div className="justify between mb-4 flex items-center px-2">
           <a
             className="text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-white"
             href=" "
           >
             Forgot Password?
           </a>
-        </div>
+        </div> */}
         <button
           className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
           onClick={handleLogin}

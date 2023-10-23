@@ -18,7 +18,10 @@ const cartSlice = createSlice({
   initialState: getCartFromLocalStorage(),
   reducers: {
     addItem: (state, action) => {
+
+
       const { product } = action.payload;
+
       const item = state.cartItems.find((i) => i.cartID === product.cartID);
       if (item) {
         item.amount += product.amount;

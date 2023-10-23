@@ -76,14 +76,17 @@ router.get("/get-orders", async (req, res) => {
 });
 
 // Route to get a specific order by ID
-router.get("/orders/:orderId", async (req, res) => {
+router.get("/orders/:dairyCode", async (req, res) => {
     try {
-        const orderId = req.params.orderId;
-        const order = await Order.findById(orderId).populate('product');
-        if (!order) {
-            return res.status(404).json({ success: false, error: "Order not found" });
+        const dairyCode = req.params.dairyCode;
+        // Assuming you want to find orders that match the dairyCode
+        const orders = await Order.find({ dairyCode: dairyCode }).populate('product');
+
+        if (!orders || orders.length === 0) {
+            return res.status(404).json({ success: false, error: "No orders found" });
         }
-        res.status(200).json({ success: true, order });
+
+        res.status(200).json({ success: true, orders });
     } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, error: "Something went wrong" });

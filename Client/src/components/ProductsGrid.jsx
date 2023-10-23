@@ -17,7 +17,8 @@ const ProductsGrid = () => {
           >
             <figure className='px-4 pt-4'>
               <img
-                src={image}
+                src={`http://localhost:5000/getImage/${image}`}
+
                 alt={title}
                 className='rounded-xl h-64 md:h-48 w-full object-cover'
               />

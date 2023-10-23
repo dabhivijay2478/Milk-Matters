@@ -72,7 +72,7 @@ export const loader =
 const Products = () => {
   return (
     <>
-      <Filters />
+      {/* <Filters /> */}
       <ProductsContainer />
       <PaginationContainer />
     </>

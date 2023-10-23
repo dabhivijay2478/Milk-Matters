@@ -14,7 +14,7 @@ const Order = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/get-products")
+      .get("/get-products")
       .then((response) => {
         setProducts(response.data.products);
       })
@@ -60,10 +60,7 @@ const Order = () => {
       };
 
       try {
-        const response = await axios.post(
-          "http://localhost:5000/order-create",
-          orderData
-        );
+        const response = await axios.post("/order-create", orderData);
         if (response.data.success) {
           console.log(response.data.message);
           setFullName("");
